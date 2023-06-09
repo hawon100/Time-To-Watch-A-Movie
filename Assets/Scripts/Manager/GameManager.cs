@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Animator anim;
+    [SerializeField] private GameObject enemyObj;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Update()
+    {
+        if(!enemyObj.activeSelf)
+        {
+            anim.SetTrigger("OnDie");
+        }
+        else if (enemyObj.activeSelf)
+        {
+            anim.SetTrigger("OnSpawn");
+        }
     }
 }

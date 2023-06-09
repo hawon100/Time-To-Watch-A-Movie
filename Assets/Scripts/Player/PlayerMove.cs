@@ -11,6 +11,8 @@ public class PlayerMove : PlayerController
 
     protected bool isRun = false;
 
+    [SerializeField] public bool execute;
+
     private void Awake()
     {
         applySpeed = walkSpeed;
@@ -55,5 +57,17 @@ public class PlayerMove : PlayerController
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+            execute = true;
+        }
+        else
+        {
+            execute = false;
+        }
     }
 }

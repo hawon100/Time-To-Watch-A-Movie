@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] public int damage;
 
-    private void Update()
+    void Update()
     {
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 10);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -1,33 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : EnemyManager
 {
-    [SerializeField] private NavMeshAgent nav;
-    [SerializeField] private Transform playerFos;
-    [SerializeField] private int health;
-
     private void Update()
     {
-        nav.SetDestination(playerFos.position);
+        if(nav.enabled) nav.SetDestination(playerFos.position);
+        transform.LookAt(playerFos.position);
     }
 
     void OnHit(int dmg)
     {
-        health -= dmg;
+        curHealth -= dmg;
+        enemyHpbar.value = (float)curHealth / maxHealth;
 
-        if(health <= 0)
+        if (curHealth <= 0)
         {
-            health = 0;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "PlayerBullet")
+        if(other.gameObject.CompareTag("PlayerBullet"))
         {
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             OnHit(bullet.damage);

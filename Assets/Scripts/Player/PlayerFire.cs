@@ -8,6 +8,7 @@ public class PlayerFire : MonoBehaviour
     [SerializeField] private float curShotDelay;
     [SerializeField] private float maxShotDelay;
     [SerializeField] private Camera fpsCam;
+    [SerializeField] private float bulletSpeed;
 
     private void Update()
     {
@@ -24,7 +25,7 @@ public class PlayerFire : MonoBehaviour
         
         GameObject bullets = Instantiate(bullet, transform.position + Vector3.up * 0.5f, transform.rotation);
         Rigidbody rigidBullet = bullets.GetComponent<Rigidbody>();
-        rigidBullet.AddForce(fpsCam.transform.forward * 10f, ForceMode.Impulse);
+        rigidBullet.AddForce(fpsCam.transform.forward * bulletSpeed, ForceMode.Impulse);
         rigidBullet.rotation = fpsCam.transform.rotation;
 
         curShotDelay = 0;
