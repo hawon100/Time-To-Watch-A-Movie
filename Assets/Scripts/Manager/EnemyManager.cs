@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] protected Slider enemyHpbar;
+    [SerializeField] public Slider enemyHpbar;
     [SerializeField] protected NavMeshAgent nav;
-    [SerializeField] protected Transform playerFos;
+    [SerializeField] public Transform playerFos;
     [SerializeField] protected int maxHealth;
     [SerializeField] protected int curHealth;
+    [SerializeField] public Animator anim;
 }

@@ -1,61 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
+[System.Serializable]
+public class ObjectInfo
+{
+    public GameObject goPrefab;
+    public int count;
+    public Transform tfPoolParent;
+}
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] private GameObject objPrefab;
-
-    GameObject[] prefab;
-
-    GameObject[] targetPool;
+    public static ObjectPool instance { get; private set; }
+    
+    public ObjectInfo[] objectInfo = null;
+    public Queue<GameObject> _Queue = new Queue<GameObject>();
 
     private void Awake()
     {
-        prefab = new GameObject[10];
-
-        Generate();
+        instance = this;
     }
 
-    void Generate()
+    private void Start()
     {
-        for (int i = 0; i < prefab.Length; i++)
-        {
-            prefab[i] = Instantiate(objPrefab);
-            prefab[i].SetActive(false);
-        }
+        _Queue = InsertQueue(objectInfo[0]);
     }
 
-    public GameObject MakeObj(string type)
+    Queue<GameObject> InsertQueue(ObjectInfo p_objectInfo)
     {
-        switch (type)
+        Queue<GameObject> t_queue = new Queue<GameObject>();
+        for(int i = 0; i < p_objectInfo.count; i++)
         {
-            case "Enemy":
-                targetPool = prefab;
-                break;
-        }
-
-        for (int i = 0; i < targetPool.Length; i++)
-        {
-            if (!targetPool[i].activeSelf)
+            GameObject t_clone = Instantiate(p_objectInfo.goPrefab, transform.position, Quaternion.identity);
+            t_clone.SetActive(false);
+            if(p_objectInfo.tfPoolParent != null)
             {
-                targetPool[i].SetActive(true);
-                return targetPool[i];
+                t_clone.transform.SetParent(p_objectInfo.tfPoolParent);
             }
+            else
+            {
+                t_clone.transform.SetParent(this.transform);
+            }
+            t_queue.Enqueue(t_clone);
         }
 
-        return null;
-    }
-
-    public GameObject[] GetPool(string type)
-    {
-        switch (type)
-        {
-            case "Enemy":
-                targetPool = prefab;
-                break;
-        }
-
-        return targetPool;
+        return t_queue;
     }
 }

@@ -8,6 +8,15 @@ public class Enemy : EnemyManager
     {
         if(nav.enabled) nav.SetDestination(playerFos.position);
         transform.LookAt(playerFos.position);
+
+        if (!this.gameObject.activeSelf)
+        {
+            anim.SetTrigger("OnDie");
+        }
+        else if (this.gameObject.activeSelf)
+        {
+            anim.SetTrigger("OnSpawn");
+        }
     }
 
     void OnHit(int dmg)
@@ -17,7 +26,9 @@ public class Enemy : EnemyManager
 
         if (curHealth <= 0)
         {
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
+            Debug.Log(gameObject.activeSelf);
+            ObjectPool.instance._Queue.Enqueue(this.gameObject);
         }
     }
 
