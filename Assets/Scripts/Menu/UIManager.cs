@@ -6,10 +6,19 @@ using UnityEngine.Video;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private VideoPlayer viewVideoPlayer;
+    [SerializeField] private GameObject CreditWindowObj;
 
     private void Start() 
     {
         viewVideoPlayer.Play();
+    }
+
+    private void Update()
+    {
+        if(CreditWindowObj.activeSelf && Input.GetMouseButtonDown(0))
+        {
+            CreditWindowObj.SetActive(false);
+        }
     }
 
     public void GameStart()
@@ -34,6 +43,6 @@ public class UIManager : MonoBehaviour
 
     public void GameCredit()
     {
-
+        CreditWindowObj.SetActive(true);
     }
 }

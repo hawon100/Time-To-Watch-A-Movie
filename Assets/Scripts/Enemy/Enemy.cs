@@ -9,11 +9,7 @@ public class Enemy : EnemyManager
         if(nav.enabled) nav.SetDestination(playerFos.position);
         transform.LookAt(playerFos.position);
 
-        if (!this.gameObject.activeSelf)
-        {
-            anim.SetTrigger("OnDie");
-        }
-        else if (this.gameObject.activeSelf)
+        if (this.gameObject.activeSelf)
         {
             anim.SetTrigger("OnSpawn");
         }
@@ -29,6 +25,7 @@ public class Enemy : EnemyManager
             this.gameObject.SetActive(false);
             Debug.Log(gameObject.activeSelf);
             ObjectPool.instance._Queue.Enqueue(this.gameObject);
+            anim.SetTrigger("OnDie");
         }
     }
 

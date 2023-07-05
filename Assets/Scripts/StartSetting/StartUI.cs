@@ -17,14 +17,14 @@ public class StartUI : MonoBehaviour
     {
         Instance = this;
         isStop = true;
-        gameLight.transform.rotation = Quaternion.Euler(-20f, 0f, 0f);
+        gameLight.transform.rotation = Quaternion.Euler(20f, 0f, 0f);
     }
 
     void Update()
     {
         TimerCal();
         TimerStop();
-        countText.text = (int)countNum + "초 후 정전됩니다.";
+        countText.text = (int)countNum + "초 후 시작됩니다.";
     }
 
     private void TimerStop()
@@ -32,7 +32,6 @@ public class StartUI : MonoBehaviour
         if (countNum <= 0)
         {
             countText.gameObject.SetActive(false);
-            gameLight.transform.rotation = Quaternion.Euler(-20f, 0f, 0f);
             isStop = false;
             countNum = 0;
         }

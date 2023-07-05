@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerPointView : PlayerController
 {
@@ -14,12 +15,23 @@ public class PlayerPointView : PlayerController
 
     [SerializeField] private Camera theCamera;
     [SerializeField] private Light Lentern;
+    private bool isLight;
 
     private void Update()
     {
         CharacterRotation();
         CameraRotation();
         LightRotation();
+        LightActive();
+    }
+
+    private void LightActive()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            isLight = !isLight;
+            Lentern.gameObject.SetActive(isLight);
+        }
     }
 
     private void CharacterRotation()
