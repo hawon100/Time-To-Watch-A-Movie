@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     [SerializeField] public Slider enemyHpbar;
     [SerializeField] protected NavMeshAgent nav;
@@ -12,4 +12,5 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] protected int maxHealth;
     [SerializeField] protected int curHealth;
     [SerializeField] public Animator anim;
+    [SerializeField] protected SphereCollider sphereCollider;
 }

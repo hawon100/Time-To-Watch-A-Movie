@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : EnemyManager
+public class Enemy : EnemyController
 {
     private void Update()
     {
@@ -15,7 +15,7 @@ public class Enemy : EnemyManager
         }
     }
 
-    void OnHit(int dmg)
+    public void OnHit(int dmg)
     {
         curHealth -= dmg;
         enemyHpbar.value = (float)curHealth / maxHealth;
@@ -29,13 +29,29 @@ public class Enemy : EnemyManager
         }
     }
 
+    private void ATKRange()
+    {
+        
+    }
+
+    private void Attack()
+    {
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("PlayerBullet"))
         {
-            Bullet bullet = other.gameObject.GetComponent<Bullet>();
-            OnHit(bullet.damage);
-            Destroy(other.gameObject);
+            Bullet bulletLogic = other.GetComponent<Bullet>();
+            OnHit(bulletLogic.damage);
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (sphereCollider.gameObject.CompareTag("Player"))
+        {
+
         }
     }
 }

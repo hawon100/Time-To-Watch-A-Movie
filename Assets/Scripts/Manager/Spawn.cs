@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Spawn : MonoBehaviour
 {
+    [SerializeField] private GunController gun;
     [SerializeField] private Transform[] spawnPoint;
     [SerializeField] private Transform playerFos;
-    [SerializeField] private string[] objName;
     [SerializeField] private Animator anim;
     [SerializeField] public Slider enemyHpbar;
-    [SerializeField] public StartUI startUI;
+    [SerializeField] public UIManager startUI;
 
     public static bool isTrue = true;
 
@@ -19,9 +19,11 @@ public class Spawn : MonoBehaviour
         if (isTrue && !startUI.isStop)
         {
             GameObject enemy = ObjectPool.instance._Queue.Dequeue();
+            ObjectPool.instance._Queue.Enqueue(enemy);
+
             enemy.transform.position = spawnPoint[0].position;
             enemy.SetActive(true);
-            EnemyManager enemyLogic = enemy.GetComponent<EnemyManager>();
+            Enemy enemyLogic = enemy.GetComponent<Enemy>();
             enemyLogic.playerFos = playerFos;
             enemyLogic.enemyHpbar = enemyHpbar;
             enemyLogic.anim = anim;

@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartUI : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    public static StartUI Instance { get; private set; }
+    public static UIManager Instance { get; private set; }
 
     [SerializeField] private Light gameLight;
     [SerializeField] private Text countText;
 
+    [SerializeField] private Slider playerStamina;
+    [SerializeField] private Slider playerHealth;
+
     [SerializeField] private float countNum;
     [HideInInspector] public bool isStop;
+
+    [SerializeField] public float curStamina;
+    [SerializeField] private int maxStamina;
+
+    [SerializeField] private float curHealth;
+    [SerializeField] private int maxHealth;
 
     private void Start()
     {
@@ -21,6 +30,23 @@ public class StartUI : MonoBehaviour
     }
 
     void Update()
+    {
+        StartTime();
+        StaminaCal();
+        HealthCal();
+    }
+
+    private void HealthCal()
+    {
+        playerHealth.value = curHealth / maxHealth;
+    }
+
+    private void StaminaCal()
+    {
+        playerStamina.value = curStamina / maxStamina;
+    }
+
+    private void StartTime()
     {
         TimerCal();
         TimerStop();

@@ -17,6 +17,8 @@ public class ObjectPool : MonoBehaviour
     
     public ObjectInfo[] objectInfo = null;
     public Queue<GameObject> _Queue = new Queue<GameObject>();
+    public Queue<GameObject> _Queue1 = new Queue<GameObject>();
+    public Queue<GameObject> _Queue2 = new Queue<GameObject>();
 
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class ObjectPool : MonoBehaviour
     private void Start()
     {
         _Queue = InsertQueue(objectInfo[0]);
+        _Queue1 = InsertQueue(objectInfo[1]);
+        _Queue2 = InsertQueue(objectInfo[2]);
     }
 
     Queue<GameObject> InsertQueue(ObjectInfo p_objectInfo)
@@ -43,7 +47,7 @@ public class ObjectPool : MonoBehaviour
             {
                 t_clone.transform.SetParent(this.transform);
             }
-            t_queue.Enqueue(t_clone);
+            t_queue.Enqueue(t_clone); 
         }
 
         return t_queue;

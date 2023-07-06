@@ -6,7 +6,6 @@ public class PlayerMove : PlayerController
 {
     [SerializeField] protected float walkSpeed;
     [SerializeField] protected float runSpeed;
-    [SerializeField] protected float crouchSpeed;
     protected float applySpeed;
 
     protected bool isRun = false;
@@ -24,13 +23,19 @@ public class PlayerMove : PlayerController
 
     private void TryRun()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && (uiManager.curStamina > 0))
         {
             applySpeed = runSpeed;
+            MoveStamina();
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             applySpeed = walkSpeed;
+        }
+
+        if (applySpeed != runSpeed)
+        {
+            uiManager.curStamina += Time.deltaTime / 2f;
         }
     }
 
@@ -45,5 +50,10 @@ public class PlayerMove : PlayerController
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+    }
+
+    private void MoveStamina()
+    {
+        uiManager.curStamina -= Time.deltaTime;
     }
 }

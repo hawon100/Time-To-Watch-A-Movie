@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class UIManager : MonoBehaviour
+public class StartUI : MonoBehaviour
 {
     [SerializeField] private VideoPlayer viewVideoPlayer;
     [SerializeField] private GameObject CreditWindowObj;
