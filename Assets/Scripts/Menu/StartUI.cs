@@ -7,6 +7,8 @@ public class StartUI : MonoBehaviour
 {
     [SerializeField] private VideoPlayer viewVideoPlayer;
     [SerializeField] private GameObject CreditWindowObj;
+    [SerializeField] private GameObject HowtoPlayWindowObj;
+    [SerializeField] private GameObject SettingWindowObj;
 
     private void Start() 
     {
@@ -15,9 +17,17 @@ public class StartUI : MonoBehaviour
 
     private void Update()
     {
-        if(CreditWindowObj.activeSelf && Input.GetMouseButtonDown(0))
+        if(CreditWindowObj.activeSelf && Input.GetMouseButtonDown(1))
         {
             CreditWindowObj.SetActive(false);
+        }
+        if (HowtoPlayWindowObj.activeSelf && Input.GetMouseButtonDown(1))
+        {
+            HowtoPlayWindowObj.SetActive(false);
+        }
+        if (SettingWindowObj.activeSelf && Input.GetMouseButtonDown(1))
+        {
+            SettingWindowObj.SetActive(false);
         }
     }
 
@@ -28,7 +38,7 @@ public class StartUI : MonoBehaviour
 
     public void GameHowto()
     {
-
+        HowtoPlayWindowObj.SetActive(true);
     }
 
     public void GameExit()
@@ -38,7 +48,7 @@ public class StartUI : MonoBehaviour
 
     public void GameSetting()
     {
-        
+        SettingWindowObj.SetActive(true);
     }
 
     public void GameCredit()

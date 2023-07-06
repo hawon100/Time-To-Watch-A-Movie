@@ -40,7 +40,7 @@ public class GunController : MonoBehaviour
 
     private void TryFire()
     {
-        if(Input.GetButtonDown("Fire1") && currentFireRate <= 0)
+        if(Input.GetButton("Fire1") && currentFireRate <= 0)
         {
             Fire();
         }
@@ -80,12 +80,12 @@ public class GunController : MonoBehaviour
 
             if (hitEtf.activeSelf)
             {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 hitEtf.SetActive(false);
             }
             if (bullet.activeSelf)
             {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 bullet.SetActive(false);
             }
         }

@@ -6,6 +6,9 @@ public class PlayerMove : PlayerController
 {
     [SerializeField] protected float walkSpeed;
     [SerializeField] protected float runSpeed;
+
+    [SerializeField] private float timeNum;
+
     protected float applySpeed;
 
     protected bool isRun = false;
@@ -19,24 +22,31 @@ public class PlayerMove : PlayerController
     {
         TryRun();
         Move();
+
+        if(uiManager.curStamina > uiManager.maxStamina)
+        {
+            uiManager.curStamina = 100;
+        }
     }
 
     private void TryRun()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && (uiManager.curStamina > 0))
+        if(!Input.GetKey(KeyCode.LeftShift))
+            applySpeed = walkSpeed;
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             applySpeed = runSpeed;
-            MoveStamina();
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            applySpeed = walkSpeed;
-        }
 
-        if (applySpeed != runSpeed)
-        {
-            uiManager.curStamina += Time.deltaTime / 2f;
+            if(uiManager.curStamina <= 0)
+            {
+                applySpeed = walkSpeed;
+            }
         }
+        
+        if(applySpeed == walkSpeed)
+            uiManager.curStamina += Time.deltaTime / timeNum;
+        if(applySpeed == runSpeed)
+            MoveStamina();
     }
 
     private void Move()
@@ -54,6 +64,6 @@ public class PlayerMove : PlayerController
 
     private void MoveStamina()
     {
-        uiManager.curStamina -= Time.deltaTime;
+        uiManager.curStamina -= Time.deltaTime * timeNum;
     }
 }

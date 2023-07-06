@@ -17,9 +17,9 @@ public class UIManager : MonoBehaviour
     [HideInInspector] public bool isStop;
 
     [SerializeField] public float curStamina;
-    [SerializeField] private int maxStamina;
+    [SerializeField] public int maxStamina;
 
-    [SerializeField] private float curHealth;
+    [SerializeField] public float curHealth;
     [SerializeField] private int maxHealth;
 
     private void Start()
