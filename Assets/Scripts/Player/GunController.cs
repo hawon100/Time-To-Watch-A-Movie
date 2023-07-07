@@ -40,7 +40,7 @@ public class GunController : MonoBehaviour
 
     private void TryFire()
     {
-        if(Input.GetButton("Fire1") && currentFireRate <= 0)
+        if(Input.GetButtonDown("Fire1") && currentFireRate <= 0)
         {
             Fire();
         }

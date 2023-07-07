@@ -32,7 +32,7 @@ public class Enemy : EnemyController
             Debug.Log(gameObject.activeSelf);
             ObjectPool.instance._Queue.Enqueue(this.gameObject);
             anim.SetTrigger("OnDie");
-            spawn.isTrue = true;
+            //spawn.isTrue = true;
         }
     }
 

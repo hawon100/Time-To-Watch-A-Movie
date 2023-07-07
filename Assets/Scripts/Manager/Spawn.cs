@@ -17,7 +17,7 @@ public class Spawn : MonoBehaviour
 
     private void Start()
     {
-        isTrue = true;
+        //isTrue = true;
         Instance = this;
     }
 
@@ -26,9 +26,7 @@ public class Spawn : MonoBehaviour
         if (isTrue && !startUI.isStop)
         {
             GameObject enemy = ObjectPool.instance._Queue.Dequeue();
-            GameObject enemy1 = ObjectPool.instance._Queue.Dequeue();
             ObjectPool.instance._Queue.Enqueue(enemy);
-            ObjectPool.instance._Queue.Enqueue(enemy1);
 
             enemy.transform.position = spawnPoint[0].position;
             enemy.SetActive(true);
@@ -37,14 +35,6 @@ public class Spawn : MonoBehaviour
             enemyLogic.enemyHpbar = enemyHpbar;
             enemyLogic.anim = anim;
             enemyLogic.spawn = spawn;
-
-            enemy1.transform.position = spawnPoint[0].position;
-            enemy1.SetActive(true);
-            Enemy enemyLogic1 = enemy1.GetComponent<Enemy>();
-            enemyLogic1.playerFos = playerFos;
-            enemyLogic1.enemyHpbar = enemyHpbar;
-            enemyLogic1.anim = anim;
-            enemyLogic1.spawn = spawn;
 
             isTrue = false;
         }

@@ -5,81 +5,26 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance { get; private set; }
+    [SerializeField] protected Light gameLight;
+    [SerializeField] protected Text countText;
 
-    [SerializeField] private Light gameLight;
-    [SerializeField] private Text countText;
+    [SerializeField] protected Slider playerStamina;
+    [SerializeField] protected Slider playerHealth;
 
-    [SerializeField] private Slider playerStamina;
-    [SerializeField] private Slider playerHealth;
-
-    [SerializeField] private float countNum;
+    [SerializeField] protected float countNum;
     [HideInInspector] public bool isStop;
 
     [SerializeField] public float curStamina;
     [SerializeField] public int maxStamina;
 
     [SerializeField] public float curHealth;
-    [SerializeField] private int maxHealth;
+    [SerializeField] protected int maxHealth;
 
-    private void Start()
-    {
-        Instance = this;
-        isStop = true;
-        gameLight.transform.rotation = Quaternion.Euler(20f, 0f, 0f);
-    }
+    [SerializeField] protected GameObject movieLight;
+    [HideInInspector] protected int lightNum;
 
-    void Update()
-    {
-        StartTime();
-        StaminaCal();
-        HealthCal();
-    }
-
-    private void HealthCal()
-    {
-        playerHealth.value = curHealth / maxHealth;
-    }
-
-    private void StaminaCal()
-    {
-        playerStamina.value = curStamina / maxStamina;
-    }
-
-    private void StartTime()
-    {
-        TimerCal();
-        TimerStop();
-        countText.text = (int)countNum + "초 후 시작됩니다.";
-    }
-
-    private void TimerStop()
-    {
-        if (countNum <= 0)
-        {
-            countText.gameObject.SetActive(false);
-            isStop = false;
-            countNum = 0;
-        }
-    }
-
-    private void TimerCal()
-    {
-        if (isStop)
-        {
-            StartCoroutine(Timer());
-        }
-        if (!isStop)
-        {
-            StopCoroutine(Timer());
-        }
-    }
-
-
-    private IEnumerator Timer()
-    {
-        countNum -= Time.deltaTime;
-
-        yield return new WaitForSeconds(1f);
-    }
+    [SerializeField] protected GameObject gameOver;
+    [SerializeField] protected GameObject gameClear;
+    [SerializeField] protected Text gameOverstageNum;
+    [SerializeField] protected Text gameClearstageNum;
 }
