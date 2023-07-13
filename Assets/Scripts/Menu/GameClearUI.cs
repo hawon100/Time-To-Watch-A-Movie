@@ -11,6 +11,6 @@ public class GameClearUI : MonoBehaviour
 
     public void Next()
     {
-        LoadingSceneController.LoadScene("Ingame");
+        LoadingSceneController.LoadScene("Ingame 1");
     }
 }

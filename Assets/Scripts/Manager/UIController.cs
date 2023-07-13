@@ -10,28 +10,71 @@ public class UIController : UIManager
     {
         Instance = this;
         isStop = true;
-        gameLight.transform.rotation = Quaternion.Euler(20f, 0f, 0f);
     }
 
     void Update()
     {
-        StartTime();
-        StaminaCal();
-        HealthCal();
+        StateCal();
+        WeaponLight();
         GameOver();
+        ItemManager();
     }
 
     public void GameClear()
     {
         gameClear.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        player.SetActive(false);
+        mainCam.gameObject.SetActive(false);
+        gameActiveCam.gameObject.SetActive(true);
     }
 
     private void GameOver()
     {
-        if(curHealth <= 0)
+        if (curHealth <= 0)
         {
             gameOver.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            player.SetActive(false);
+            mainCam.gameObject.SetActive(false);
+            gameActiveCam.gameObject.SetActive(true);
         }
+    }
+
+    private void ItemManager()
+    {
+        if (item.isGun)
+        {
+            weaponGun.SetActive(true);
+        }
+    }
+
+    private void WeaponLight()
+    {
+        if(!movieLight.activeSelf)
+        {
+            weaponLight.SetActive(true);
+        }
+    }
+
+    public void MovieLight()
+    {
+        if (lightNum >= 3)
+        {
+            StopCoroutine(LightDirect());
+        }
+        else
+        {
+            StartCoroutine(LightDirect());
+        }
+    }
+
+    private void StateCal()
+    {
+        StaminaCal();
+        HealthCal();
     }
 
     private void HealthCal()
@@ -44,55 +87,21 @@ public class UIController : UIManager
         playerStamina.value = curStamina / maxStamina;
     }
 
-    private void StartTime()
-    {
-        TimerCal();
-        TimerStop();
-        countText.text = (int)countNum + "초 후 시작됩니다.";
-    }
-
-    private void TimerStop()
-    {
-        if (countNum <= 0)
-        {
-            countText.gameObject.SetActive(false);
-            isStop = false;
-            countNum = 0;
-        }
-    }
-
-    private void TimerCal()
-    {
-        if (isStop)
-        {
-            StartCoroutine(Timer());
-        }
-        if (!isStop)
-        {
-            StopCoroutine(Timer());
-        }
-    }
-
-    private IEnumerator Timer()
-    {
-        countNum -= Time.deltaTime;
-
-        yield return new WaitForSeconds(1f);
-    }
-
     private IEnumerator LightDirect()
     {
-        if (lightNum == 3)
-            StopCoroutine(LightDirect());
+        if (lightNum <= 0)
+        {
+            yield return new WaitForSeconds(waitTime);
+        }
 
         movieLight.SetActive(true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(nightTime);
 
         movieLight.SetActive(false);
 
-        yield return new WaitForSeconds(1f);
-
         lightNum++;
+
+        yield return new WaitForSeconds(nightTime);
     }
 }

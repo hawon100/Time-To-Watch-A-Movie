@@ -8,15 +8,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(Instance);
-        }
-        else
-        {
-            Destroy(Instance);
-        }
+        Instance = this;
     }
 
     public void SFXPlay(string sfxName, AudioClip clip)

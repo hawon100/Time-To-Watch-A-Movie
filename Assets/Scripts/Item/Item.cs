@@ -2,21 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType
-{
-    ItemGun,
-    Bullet,
-    Stamina,
-    Health
-}
-
 public class Item : MonoBehaviour
 {
-    [SerializeField] private ItemType itemType;
     [SerializeField] private float num;
+    [SerializeField] private GameObject interactImage;
+
+    private void Start()
+    {
+        interactImage.SetActive(false);
+    }
 
     private void Update()
-    { 
+    {
+        ItemRotate();
+        InteractKeyInput();
+    }
+
+    private void InteractKeyInput()
+    {
+        if (interactImage.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                this.gameObject.SetActive(false);
+                interactImage.SetActive(false);
+            }
+        }
+    }
+
+    private void ItemRotate()
+    {
         float temp = num * Time.deltaTime;
         transform.Rotate(temp, temp, temp);
     }
@@ -25,7 +40,15 @@ public class Item : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            this.gameObject.SetActive(false);
+            interactImage.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            interactImage.SetActive(false);
         }
     }
 }

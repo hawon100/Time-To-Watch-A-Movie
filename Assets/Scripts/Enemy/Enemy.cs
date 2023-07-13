@@ -18,8 +18,14 @@ public class Enemy : EnemyController
     private void Update()
     {
         enemyHpbar.value = (float)curHealth / maxHealth;
-        nav.SetDestination(playerFos.position);
         transform.LookAt(playerFos.position);
+
+        Move();
+    }
+
+    private void Move()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, playerFos.position, moveSpeed * Time.deltaTime);
     }
 
     public void OnHit(int dmg)
@@ -29,10 +35,10 @@ public class Enemy : EnemyController
         if (curHealth <= 0)
         {
             this.gameObject.SetActive(false);
-            Debug.Log(gameObject.activeSelf);
+            //Debug.Log(gameObject.activeSelf);
             ObjectPool.instance._Queue.Enqueue(this.gameObject);
             anim.SetTrigger("OnDie");
-            //spawn.isTrue = true;
+            uiCtrl.GameClear();
         }
     }
 
@@ -40,7 +46,6 @@ public class Enemy : EnemyController
     {
         if(other.gameObject.CompareTag("PlayerBullet"))
         {
-            Debug.Log("Hit!");
             Bullet bulletLogic = other.GetComponent<Bullet>();
             OnHit(bulletLogic.damage);
         }

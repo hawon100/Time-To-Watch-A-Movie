@@ -15,7 +15,7 @@ public class PlayerPointView : PlayerController
 
     [SerializeField] private Camera theCamera;
     [SerializeField] private Light Lentern;
-    private bool isLight = true;
+    private bool isLight = false;
 
     private void Update()
     {

@@ -33,7 +33,7 @@ public class StartUI : MonoBehaviour
 
     public void GameStart()
     {
-        LoadingSceneController.LoadScene("Ingame");
+        LoadingSceneController.LoadScene("StageSelect");
     }
 
     public void GameHowto()

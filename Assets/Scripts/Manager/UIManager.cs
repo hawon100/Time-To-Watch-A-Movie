@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] protected Light gameLight;
-    [SerializeField] protected Text countText;
-
     [SerializeField] protected Slider playerStamina;
     [SerializeField] protected Slider playerHealth;
 
@@ -21,10 +18,23 @@ public class UIManager : MonoBehaviour
     [SerializeField] protected int maxHealth;
 
     [SerializeField] protected GameObject movieLight;
-    [HideInInspector] protected int lightNum;
+    [SerializeField] protected int lightNum;
+
+    [SerializeField] protected float nightTime;
+    [SerializeField] protected float waitTime;
 
     [SerializeField] protected GameObject gameOver;
     [SerializeField] protected GameObject gameClear;
     [SerializeField] protected Text gameOverstageNum;
     [SerializeField] protected Text gameClearstageNum;
+
+    [SerializeField] protected GameObject weaponLight;
+
+    [SerializeField] protected GameObject weaponGun;
+    [SerializeField] protected ItemGun item;
+
+    [SerializeField] protected GameObject player;
+
+    [SerializeField] protected Camera mainCam;
+    [SerializeField] protected Camera gameActiveCam;
 }
