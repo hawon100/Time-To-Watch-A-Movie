@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b71addf975982be4abdeef66f7418ff4, type: 2}
+  - {fileID: 2100000, guid: 63f63b7e0d60582478c82a1ec55c1fb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,11 +110,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093cf34144b598649b0102f966e416db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDatas:
+  - {fileID: 11400000, guid: 002e435c1cd96ef469b28474cb2d66b5, type: 2}
+  - {fileID: 11400000, guid: 820d51747fba25741a0408c6cab48004, type: 2}
+  - {fileID: 11400000, guid: 9fb3688b35652b64bbee886e474b14ec, type: 2}
+  - {fileID: 11400000, guid: 515448ae8df1f7d4c8b8c54f49860536, type: 2}
+  - {fileID: 11400000, guid: aee00b1dc9e52a64abc0fc7d6b1f9367, type: 2}
+  - {fileID: 11400000, guid: d00b1d2e2e5118a4fa79458c93240456, type: 2}
+  - {fileID: 11400000, guid: 048840b6c50a7c64fba098d2931ef3a7, type: 2}
+  moveSpeed: 30
   spawn: {fileID: 0}
   enemyHpbar: {fileID: 0}
   playerFos: {fileID: 0}
-  maxHealth: 3000
-  curHealth: 3000
+  maxHealth: 0
+  curHealth: 0
   anim: {fileID: 0}
   uiCtrl: {fileID: 0}
   damage: 0

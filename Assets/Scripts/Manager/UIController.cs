@@ -22,10 +22,8 @@ public class UIController : UIManager
 
     public void GameClear()
     {
+        gameManager.isActive = true;
         gameClear.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        player.SetActive(false);
         mainCam.gameObject.SetActive(false);
         gameActiveCam.gameObject.SetActive(true);
     }

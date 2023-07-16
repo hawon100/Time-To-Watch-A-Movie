@@ -17,8 +17,15 @@ public class PlayerPointView : PlayerController
     [SerializeField] private Light Lentern;
     private bool isLight = false;
 
+    [SerializeField] private GameObject escapeWin;
+
     private void Update()
     {
+        if(escapeWin.activeSelf)
+        {
+            return;
+        }
+
         CharacterRotation();
         CameraRotation();
         LightRotation();

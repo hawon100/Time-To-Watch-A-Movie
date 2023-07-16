@@ -15,6 +15,14 @@ public class PlayerHit : MonoBehaviour
         waitingTime = 2;
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            HealthDecrease();
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.CompareTag("Enemy"))

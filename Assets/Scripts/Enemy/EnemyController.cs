@@ -5,10 +5,14 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] protected StageUnLock[] enemyDatas;
+
     [SerializeField] protected float moveSpeed;
     [SerializeField] public Spawn spawn;
     [SerializeField] public Slider enemyHpbar;
+
     [SerializeField] public Transform playerFos;
+
     [SerializeField] protected int maxHealth;
     [SerializeField] protected int curHealth;
     [SerializeField] public Animator anim;

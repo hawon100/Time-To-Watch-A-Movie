@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] protected GameManager gameManager;
+
     [SerializeField] protected Slider playerStamina;
     [SerializeField] protected Slider playerHealth;
 
-    [SerializeField] protected float countNum;
     [HideInInspector] public bool isStop;
 
     [SerializeField] public float curStamina;

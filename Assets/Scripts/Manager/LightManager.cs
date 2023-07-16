@@ -6,28 +6,18 @@ public class LightManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] lightObj;
 
-    private void Update()
+    private void Start()
     {
         StartCoroutine(EMarkerGrid());
     }
 
     public IEnumerator EMarkerGrid()
     {
-        int count = 0;
+        int random = Random.Range(0, 6);
 
-        while (count < 3)
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                lightObj[i].SetActive(false);
-            }
-            yield return new WaitForSeconds(3f);
-            for (int i = 0; i < 6; i++)
-            {
-                lightObj[i].SetActive(true);
-            }
-            yield return new WaitForSeconds(3f);
-            count++;
-        }
+        lightObj[random].SetActive(false);
+        yield return new WaitForSeconds(3f);
+        lightObj[random].SetActive(true);
+        yield return new WaitForSeconds(3f);
     }
 }
