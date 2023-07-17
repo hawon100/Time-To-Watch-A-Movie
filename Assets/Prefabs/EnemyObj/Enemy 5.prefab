@@ -118,7 +118,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aee00b1dc9e52a64abc0fc7d6b1f9367, type: 2}
   - {fileID: 11400000, guid: d00b1d2e2e5118a4fa79458c93240456, type: 2}
   - {fileID: 11400000, guid: 048840b6c50a7c64fba098d2931ef3a7, type: 2}
-  moveSpeed: 30
+  moveSpeed: 15
   spawn: {fileID: 0}
   enemyHpbar: {fileID: 0}
   playerFos: {fileID: 0}
