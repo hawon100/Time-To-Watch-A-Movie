@@ -16746,8 +16746,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1962355788}
   myRigid: {fileID: 852292603}
-  walkSpeed: 50
-  runSpeed: 150
+  walkSpeed: 25
+  runSpeed: 50
   timeNum: 1
 --- !u!114 &852292607
 MonoBehaviour:
