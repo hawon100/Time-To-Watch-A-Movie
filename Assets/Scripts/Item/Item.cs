@@ -44,6 +44,14 @@ public class Item : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            interactImage.SetActive(true);
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

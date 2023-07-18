@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3a8872a77a2764c9b057d9f4a6137b, type: 3}
   m_Name: Enemy 5
   m_EditorClassIdentifier: 
-  enemyName: Enemy 5
+  enemyName: enemy 5
   isDead: 0

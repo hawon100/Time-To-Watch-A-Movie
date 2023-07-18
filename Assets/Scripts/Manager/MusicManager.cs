@@ -9,31 +9,30 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] public AudioSource bgm;
     [SerializeField] private GameObject Audio;
+    [SerializeField] private GameObject audioObj;
 
     [SerializeField] private AudioClip MenuBgm;
     [SerializeField] private AudioClip IngameBgm;
 
     private void Awake()
     {
-        DontDestroyOnLoad(Audio);
-        if (Instance == null)
+        var objs = FindObjectsOfType<MusicManager>();
+        if (objs.Length == 1)
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
     }
 
     void OnEnable()
     {
-        // 씬 매니저의 sceneLoaded에 체인을 건다.
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // 체인을 걸어서 이 함수는 매 씬마다 호출된다.
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         switch (SceneManager.GetActiveScene().name)

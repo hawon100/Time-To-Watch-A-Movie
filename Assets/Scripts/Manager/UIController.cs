@@ -43,7 +43,7 @@ public class UIController : UIManager
 
     private void ItemManager()
     {
-        if (item.isGun)
+        if (weaponLight.activeSelf &&!itemGun.activeSelf)
         {
             weaponGun.SetActive(true);
         }
@@ -54,6 +54,17 @@ public class UIController : UIManager
         if(!movieLight.activeSelf)
         {
             weaponLight.SetActive(true);
+            if(!weaponGun.activeSelf)
+                itemGun.SetActive(true);
+        }
+
+        if(interactImage.activeSelf && itemGun.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                itemGun.SetActive(false);
+                interactImage.SetActive(false);
+            }
         }
     }
 

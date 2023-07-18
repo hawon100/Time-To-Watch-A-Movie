@@ -22,20 +22,20 @@ EditorBuildSettings:
     guid: e01191d7492f7a844a47634335953a4d
   - enabled: 1
     path: Assets/Scenes/Stage/Ingame 1.unity
-    guid: edf5f2b089fccad438bd02134239c7af
+    guid: 8a32c02d037432a499aeaaf452ae6ef7
   - enabled: 1
     path: Assets/Scenes/Stage/Ingame 2.unity
-    guid: d2a4e479e486b47429334f430d187e84
+    guid: 07334b0e38d5a5e4ea7a117142b2e12e
   - enabled: 1
     path: Assets/Scenes/Stage/Ingame 3.unity
-    guid: 944d8e138666a4a4e8f3e365d1231b15
+    guid: c69492e5d89fe0b45b82373eba4e8f76
   - enabled: 1
     path: Assets/Scenes/Stage/Ingame 4.unity
-    guid: 35a02fa3be77084429ae74522d7d65f5
+    guid: eaad7fa85d383764484ae602dc2c7cda
   - enabled: 1
     path: Assets/Scenes/Stage/Ingame 5.unity
-    guid: 5e39df69ee4455a45bb8e2628212fd09
+    guid: 47ef8d80c8a259d408a6034b903b204e
   - enabled: 1
     path: Assets/Scenes/Stage/Ingame 6.unity
-    guid: 6fde131f3ce07ee4e825c69e5136c20c
+    guid: 7d9449d9a8bda9a4dbfe301dbeb1a33c
   m_configObjects: {}

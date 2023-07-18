@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] protected StageUnLock[] enemyDatas;
+    [SerializeField] protected StageManager enemyDatas;
 
     [SerializeField] protected float moveSpeed;
     [SerializeField] public Spawn spawn;

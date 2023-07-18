@@ -52,19 +52,19 @@ public class Enemy : EnemyController
         if (curHealth <= 0)
         {
             this.gameObject.SetActive(false);
-            ObjectPool.instance._Queue.Enqueue(this.gameObject);
+            //ObjectPool.instance._Queue.Enqueue(this.gameObject);
             anim.SetTrigger("OnDie");
             uiCtrl.GameClear();
 
 
             switch (SceneManager.GetActiveScene().name)
             {
-                case "Ingame 0": enemyDatas[1].isDead = true; break;
-                case "Ingame 1": enemyDatas[2].isDead = true; break;
-                case "Ingame 2": enemyDatas[3].isDead = true; break;
-                case "Ingame 3": enemyDatas[4].isDead = true; break;
-                case "Ingame 4": enemyDatas[5].isDead = true; break;
-                case "Ingame 5": enemyDatas[6].isDead = true; break;
+                case "Ingame 0": enemyDatas.isDead[1] = true; break;
+                case "Ingame 1": enemyDatas.isDead[2] = true; break;
+                case "Ingame 2": enemyDatas.isDead[3] = true; break;
+                case "Ingame 3": enemyDatas.isDead[4] = true; break;
+                case "Ingame 4": enemyDatas.isDead[5] = true; break;
+                case "Ingame 5": enemyDatas.isDead[6] = true; break;
                 case "Ingame 6":  break;
             }
         }

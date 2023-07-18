@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : PlayerController
 {
-    [SerializeField] protected float walkSpeed;
-    [SerializeField] protected float runSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
 
     [SerializeField] private float timeNum;
 

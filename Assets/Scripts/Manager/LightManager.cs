@@ -13,11 +13,14 @@ public class LightManager : MonoBehaviour
 
     public IEnumerator EMarkerGrid()
     {
-        int random = Random.Range(0, 6);
+        while (true)
+        {
+            int random = Random.Range(0, 6);
 
-        lightObj[random].SetActive(false);
-        yield return new WaitForSeconds(3f);
-        lightObj[random].SetActive(true);
-        yield return new WaitForSeconds(3f);
+            lightObj[random].SetActive(false);
+            yield return new WaitForSeconds(2f);
+            lightObj[random].SetActive(true);
+            yield return new WaitForSeconds(2f);
+        }
     }
 }

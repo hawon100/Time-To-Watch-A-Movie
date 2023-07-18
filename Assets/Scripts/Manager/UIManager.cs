@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] protected Text gameClearstageNum;
 
     [SerializeField] protected GameObject weaponLight;
+    [SerializeField] protected GameObject itemGun;
 
     [SerializeField] protected GameObject weaponGun;
     [SerializeField] protected ItemGun item;
@@ -38,4 +39,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] protected Camera mainCam;
     [SerializeField] protected Camera gameActiveCam;
+
+    [SerializeField] protected GameObject interactImage;
 }

@@ -16,8 +16,7 @@ public class PlayerInfor : PlayerController
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
-            GameObject enemy = other.gameObject;
-            Enemy enemyLogic = enemy.GetComponent<Enemy>();
+            Enemy enemyLogic = other.gameObject.GetComponent<Enemy>();
             OnHit(enemyLogic.damage);
         }
     }

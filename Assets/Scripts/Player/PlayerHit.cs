@@ -12,7 +12,7 @@ public class PlayerHit : MonoBehaviour
     private void Start()
     {
         timer = 0.0f;
-        waitingTime = 2;
+        waitingTime = 1;
     }
 
     private void OnTriggerExit(Collider other)
@@ -37,7 +37,7 @@ public class PlayerHit : MonoBehaviour
 
         if(timer > waitingTime)
         {
-            uiCirl.curHealth -= 2;
+            uiCirl.curHealth -= 5;
 
             timer = 0;
         }
