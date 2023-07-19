@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] protected int maxHealth;
 
     [SerializeField] protected GameObject movieLight;
+    [SerializeField] protected GameObject movieLight2;
     [SerializeField] protected int lightNum;
 
     [SerializeField] protected float nightTime;
@@ -27,7 +28,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] protected GameObject gameOver;
     [SerializeField] protected GameObject gameClear;
     [SerializeField] protected Text gameOverstageNum;
-    [SerializeField] protected Text gameClearstageNum;
 
     [SerializeField] protected GameObject weaponLight;
     [SerializeField] protected GameObject itemGun;

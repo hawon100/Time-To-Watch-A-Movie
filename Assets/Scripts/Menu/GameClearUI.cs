@@ -23,4 +23,9 @@ public class GameClearUI : MonoBehaviour
             case "Ingame 6": break;
         }
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

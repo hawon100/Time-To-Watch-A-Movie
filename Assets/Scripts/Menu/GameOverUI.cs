@@ -23,4 +23,9 @@ public class GameOverUI : MonoBehaviour
             case "Ingame 6": LoadingSceneController.LoadScene("Ingame 6"); break;
         }
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

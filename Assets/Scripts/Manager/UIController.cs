@@ -108,6 +108,7 @@ public class UIController : UIManager
         yield return new WaitForSeconds(nightTime);
 
         movieLight.SetActive(false);
+        movieLight2.SetActive(false);
 
         lightNum++;
 

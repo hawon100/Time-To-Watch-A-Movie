@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text nowStageNum;
     [SerializeField] private GameObject escapeWin;
     [SerializeField] public bool isActive;
+
+    [SerializeField] private Text[] mission;
+    [SerializeField] private int interactionA;
+    [SerializeField] private int interactionB;
+
+    [SerializeField] private GameObject[] item;
     
     void Start()
     {
@@ -19,17 +25,6 @@ public class GameManager : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
-        switch (SceneManager.GetActiveScene().name)
-        {
-            case "Ingame 0": stageNum[0].text = "1"; stageNum[1].text = "1"; break;
-            case "Ingame 1": stageNum[0].text = "2"; stageNum[1].text = "2"; break;
-            case "Ingame 2": stageNum[0].text = "3"; stageNum[1].text = "3"; break;
-            case "Ingame 3": stageNum[0].text = "4"; stageNum[1].text = "4"; break;
-            case "Ingame 4": stageNum[0].text = "5"; stageNum[1].text = "5"; break;
-            case "Ingame 5": stageNum[0].text = "6"; stageNum[1].text = "6"; break;
-            case "Ingame 6": stageNum[0].text = "7"; stageNum[1].text = "7"; break;
-        }
 
         nowStageNum.text = "Stage " + stageNum[0].text;
     }
@@ -43,6 +38,22 @@ public class GameManager : MonoBehaviour
     {
         Escape();
         CursorActive();
+        QuestText();
+    }
+
+    private void QuestText()
+    {
+        if (!item[0].activeSelf)
+        {
+            interactionA = 1;
+        }
+        if (!item[1].activeSelf)
+        {
+            interactionB = 1;
+        }
+
+        mission[0].text = "ÆËÄÜ ¸Ô±â " + interactionA + " / 1";
+        mission[1].text = "  ÃÑ È¹µæ " + interactionB + " / 1";
     }
 
     private void CursorActive()
